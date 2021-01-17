@@ -4,10 +4,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
+import javax.persistence.*;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
+@Entity
 @Getter
 @Setter
 @ToString
@@ -15,6 +18,9 @@ import java.util.Date;
 @AllArgsConstructor
 @ApiModel(description="All details about the user.")
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Size(min = 2,message = "Name should have at least 2 characters")
@@ -24,4 +30,7 @@ public class User {
     @ApiModelProperty(notes="Birth date should be in the past")
     @Past
     private Date birthDate;
+
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts;
 }

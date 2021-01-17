@@ -14,4 +14,9 @@ Add these dependencies to pom.xml instead of the two swagger dependencies.
 
 http://localhost:8080/actuator
 
+https://github.com/in28minutes/spring-microservices
+
+http://localhost:8080/h2-console
+verify that JDBC URL has value jdbc:h2:mem:testdb
+
 
